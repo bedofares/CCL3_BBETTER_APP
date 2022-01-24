@@ -12,5 +12,18 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+
+        <item name="android:fontFamily">@font/muli</item>
+        <item name="fontFamily">@font/muli</item> <!-- target android sdk versions < 26 and > 14 if theme other than AppCompat -->
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
     </style>
+
+    <style name="TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/default_box_stroke_color</item>
+        <item name="boxStrokeWidth">2dp</item>
+    </style>
+
 </resources>

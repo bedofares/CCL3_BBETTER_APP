@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".onBoarding.Screens.FirstScreen">
+    tools:context=".onBoarding.Screens.FirstScreen"
+    >
 
     <ImageView
         android:id="@+id/imageView"
@@ -22,6 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="45dp"
         android:text="Free up your mind"
+        android:textColor="@color/titleColor"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,6 +39,7 @@
         android:layout_marginEnd="50dp"
         android:gravity="center"
         android:text="Organize your tasks and habits to stress less"
+        android:textColor="@color/OnBoardingSubText"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">BBETTER </string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="HomePage_Title">Let’s make habits togther!</string>
+    <string name="Empty_State_Quote">Good habit is your best and most faithfull friend</string>
+    <string name="create_your_first_habit">Create your first habit</string>
 </resources>
