@@ -32,11 +32,10 @@
         android:background="@drawable/ic_three_dots_vertical"
         app:layout_constraintBottom_toTopOf="@+id/recycler_view_items"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.592"
+        app:layout_constraintHorizontal_bias="0.833"
         app:layout_constraintStart_toEndOf="@+id/HomeTitle"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.45"
-      />
+        app:layout_constraintVertical_bias="0.433" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_items"

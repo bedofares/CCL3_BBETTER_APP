@@ -8,6 +8,7 @@ class HabitModel(
     var reminderTime:String = "",
     var startDate:String = "",
     var habitImage: String = "",
+    var lastCheck: String = "",
     var counterScore : Int = 0
 
 )

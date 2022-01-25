@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/detailLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/bckColor">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/habitDetailTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
         app:layout_constraintBottom_toTopOf="@+id/progress_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.083"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.274"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp">
+        app:layout_constraintVertical_bias="0.274">
 
         <ImageButton
             android:id="@+id/Bck_btn"
@@ -48,6 +48,18 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.571" />
 
+        <Button
+            android:id="@+id/options"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/ic_three_dots_vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/HabitDetail_Title"
+            app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -56,11 +68,13 @@
         android:layout_width="220dp"
         android:layout_height="220dp"
         android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="8dp"
         android:indeterminateOnly="false"
         android:progressDrawable="@drawable/progress_circle"
         app:layout_constraintBottom_toTopOf="@+id/Habit_Goal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Track_Habit"
         tools:progress="60" />
@@ -97,6 +111,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="40dp"
         android:text="Track Your Habit"
         android:textColor="@color/black"
         android:textSize="24sp"
@@ -109,76 +124,101 @@
         android:id="@+id/Habit_Goal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
         android:hint="Goal : 30 days"
         android:textColor="@color/black"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/taskStartDateDetail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progress_bar"
-        app:layout_constraintVertical_bias="0.581"
         tools:ignore="MissingPrefix" />
 
     <TextView
         android:id="@+id/taskStartDateDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="31dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginBottom="17dp"
         android:focusable="false"
         android:hint="Starting Date : DD/MM/YY"
         android:padding="10dp"
         android:singleLine="true"
         android:textColor="@color/black"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/CheckedIn_btn"
+        app:layout_constraintBottom_toTopOf="@+id/LastCheck"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Habit_Goal" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/CheckedIn_btn"
-        android:layout_width="100dp"
+    <TextView
+        android:id="@+id/LastCheck"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/btn_outline"
-        android:text="Done?"
+        android:layout_marginStart="95dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="88dp"
+        android:focusable="false"
+        android:hint="Last CheckIn: DD/MM/YY ,HH:mm"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:text="Last CheckIn: Not Checked yet"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progress_bar"
-        app:layout_constraintVertical_bias="0.687" />
+        app:layout_constraintTop_toBottomOf="@+id/taskStartDateDetail" />
 
     <LinearLayout
         android:id="@+id/linearLayout4"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_marginBottom="80dp"
+        android:gravity="center"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progress_bar"
-        app:layout_constraintVertical_bias="0.871">
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_delete"
+            android:id="@+id/btn_log"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/btn_outline"
-            android:text="Delete"
+            android:background="@drawable/btn_background"
+            android:text="Tracking Log"
             android:textColor="@color/black" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_edit"
+            android:id="@+id/CheckedIn_btn"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:background="@drawable/btn_background"
-            android:text="Edit"
-            android:textColor="@color/colorPrimary"/>
+            android:layout_marginStart="10dp"
+            android:background="@drawable/btn_outline"
+            android:text="Done?"
+            android:textColor="@color/black" />
+
+
     </LinearLayout>
+
+
+    <!--        <androidx.appcompat.widget.AppCompatButton-->
+    <!--            android:id="@+id/btn_delete"-->
+    <!--            android:layout_width="150dp"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:background="@drawable/btn_outline"-->
+    <!--            android:text="Delete"-->
+    <!--            android:textColor="@color/black" />-->
+
+    <!--        <androidx.appcompat.widget.AppCompatButton-->
+    <!--            android:id="@+id/btn_edit"-->
+    <!--            android:layout_width="150dp"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginStart="20dp"-->
+    <!--            android:background="@drawable/btn_background"-->
+    <!--            android:text="Log"-->
+    <!--            android:textColor="@color/colorPrimary"/>-->
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

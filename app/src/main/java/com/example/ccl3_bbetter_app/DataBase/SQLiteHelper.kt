@@ -31,10 +31,11 @@ class SQLiteHelper(
         private const val STARTDATE = "startDate"
         private const val IMAGE = "habitImage"
         private const val COUNTER = "counter"
+        private const val LASTCHECKIN = "lastCheck"
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
-        //Create table
+        //Create table + columns
         val CREATE_TABLE_HABIT = (
                 "CREATE TABLE " + TBL_HABIT + "("
                         + ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -44,7 +45,8 @@ class SQLiteHelper(
                         + REMINDER + " TEXT,"
                         + STARTDATE + " TEXT,"
                         + IMAGE + " TEXT,"
-                        + COUNTER + " INTEGER"
+                        + COUNTER + " INTEGER,"
+                        + LASTCHECKIN + " TEXT"
                         + ")")
         db?.execSQL(CREATE_TABLE_HABIT)
     }
@@ -54,8 +56,8 @@ class SQLiteHelper(
         onCreate(db)
     }
 
-    /**Retrieve all Habits**/
-    @SuppressLint("Range")
+
+    /** Retrieve all Habits **/
     fun getAllHabit(context: Context): ArrayList<HabitModel> {
         val selectQuery = "SELECT * FROM $TBL_HABIT"
         val db = this.readableDatabase
@@ -63,64 +65,35 @@ class SQLiteHelper(
         val habits = ArrayList<HabitModel>()
 
         if (cursor.count == 0) {
-            //Toast.makeText(context, "No Record found", Toast.LENGTH_SHORT).show()
+
         } else {
             cursor.moveToFirst()
             while (!cursor.isAfterLast()) {
                 val habit = HabitModel()
-                habit.id = cursor.getInt(cursor.getColumnIndex(ID))
-                habit.title = cursor.getString(cursor.getColumnIndex(TITLE))
-                habit.description = cursor.getString(cursor.getColumnIndex(DESCRIPTION))
-                habit.goal = cursor.getInt(cursor.getColumnIndex(GOAL))
-                habit.reminderTime = cursor.getString(cursor.getColumnIndex(REMINDER))
-                habit.startDate = cursor.getString(cursor.getColumnIndex(STARTDATE))
-                habit.habitImage = cursor.getString(cursor.getColumnIndex(IMAGE))
-                habit.counterScore = cursor.getInt(cursor.getColumnIndex(COUNTER))
+                habit.id = cursor.getInt(cursor.getColumnIndexOrThrow(ID))
+                habit.title = cursor.getString(cursor.getColumnIndexOrThrow(TITLE))
+                habit.description = cursor.getString(cursor.getColumnIndexOrThrow(DESCRIPTION))
+                habit.goal = cursor.getInt(cursor.getColumnIndexOrThrow(GOAL))
+                habit.reminderTime = cursor.getString(cursor.getColumnIndexOrThrow(REMINDER))
+                habit.startDate = cursor.getString(cursor.getColumnIndexOrThrow(STARTDATE))
+                habit.habitImage = cursor.getString(cursor.getColumnIndexOrThrow(IMAGE))
+                habit.counterScore = cursor.getInt(cursor.getColumnIndexOrThrow(COUNTER))
+                habit.lastCheck = cursor.getString(cursor.getColumnIndexOrThrow(LASTCHECKIN))
 
                 habits.add(habit)
                 cursor.moveToNext()
             }
-            //Toast.makeText(context, "${cursor.count.toString()} Records found", Toast.LENGTH_SHORT).show()
+
         }
         cursor.close()
         //db.close()
         return habits
     }
 
-//    @SuppressLint("Range")
-//    fun getHabit(id: Int): HabitModel {
-//        val habit = HabitModel()
-//        val db = writableDatabase
-//        val selectQuery = "SELECT * FROM $TBL_HABIT WHERE $ID = $id"
-//
-//        val cursor = db.rawQuery(selectQuery, null)
-//        cursor.moveToFirst()
-//        if (cursor.count == 0) {
-//        } else {
-//            cursor.moveToFirst()
-//            while (!cursor.isAfterLast()) {
-//                habit.id = cursor.getInt(cursor.getColumnIndex(ID))
-//                habit.title = cursor.getString(cursor.getColumnIndex(TITLE))
-//                habit.description = cursor.getString(cursor.getColumnIndex(DESCRIPTION))
-//                //habit.updatereminderTime = cursor.getString(cursor.getColumnIndex(UPDATED_REMINDER))
-//                habit.goal = cursor.getInt(cursor.getColumnIndex(GOAL))
-//                habit.reminderTime = cursor.getString(cursor.getColumnIndex(REMINDER))
-//                habit.startDate = cursor.getString(cursor.getColumnIndex(STARTDATE))
-//                habit.habitImage = cursor.getString(cursor.getColumnIndex(IMAGE))
-//                habit.counterScore = cursor.getInt(cursor.getColumnIndex(COUNTER))
-//
-//
-//                cursor.moveToNext()
-//            }
-//        }
-//        cursor.close()
-//        return habit
-//    }
 
     /**Insert Habits to dataBase Table**/
     fun insertHabit(context: Context, habit: HabitModel) {
         val contentValues = ContentValues()
-        //contentValues.put(ID, habit.id)
         contentValues.put(TITLE, habit.title)
         contentValues.put(DESCRIPTION, habit.description)
         contentValues.put(GOAL, habit.goal)
@@ -128,12 +101,12 @@ class SQLiteHelper(
         contentValues.put(STARTDATE, habit.startDate)
         contentValues.put(IMAGE, habit.habitImage)
         contentValues.put(COUNTER, habit.counterScore)
+        contentValues.put(LASTCHECKIN, habit.lastCheck)
 
         val db = this.writableDatabase
         try {
             db.insert(TBL_HABIT, null, contentValues)
-            Toast.makeText(context, "Habit added", Toast.LENGTH_SHORT)
-                .show()
+            // Toast.makeText(context, "Habit added", Toast.LENGTH_SHORT).show()
         } catch (e: Exception) {
             Toast.makeText(context, e.message, Toast.LENGTH_SHORT).show()
         }
@@ -141,11 +114,10 @@ class SQLiteHelper(
     }
 
 
-    /**Update Habit details**/
+    /** Update Habit details **/
     fun updateHabit(habit: HabitModel): Int {
         val db = this.writableDatabase
         val contentValues = ContentValues()
-        //var result : Boolean = false
         contentValues.put(ID, habit.id)
         contentValues.put(TITLE, habit.title)
         contentValues.put(DESCRIPTION, habit.description)
@@ -159,7 +131,7 @@ class SQLiteHelper(
 
     }
 
-    /**Update Tracking counter**/
+    /** Update Tracking counter **/
     fun updateCounter(habit: HabitModel): Int {
         val db = this.writableDatabase
         val contentValues = ContentValues()
@@ -169,7 +141,16 @@ class SQLiteHelper(
 
     }
 
-    /**Delete Habit**/
+    /** Update last checkIn **/
+    fun updateCheckIn(habit: HabitModel): Int {
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put(LASTCHECKIN, habit.lastCheck)
+        val success = db.update(TBL_HABIT, contentValues, "$ID=?", arrayOf(habit.id.toString()))
+        return success
+    }
+
+    /** Delete single Habit **/
     fun deleteHabit(id: Int): Boolean {
         val db = this.readableDatabase
         val selectQuery = "Delete From $TBL_HABIT where $ID = $id"
@@ -185,6 +166,7 @@ class SQLiteHelper(
         return result
     }
 
+    /** Delete All Habits **/
 
     fun deleteAllHabit(context: Context): Boolean {
         val db = this.writableDatabase

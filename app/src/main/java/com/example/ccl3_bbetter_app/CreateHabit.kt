@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.os.SystemClock
 import android.util.Log
 import android.view.View
 import android.widget.DatePicker
@@ -13,6 +14,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.example.ccl3_bbetter_app.DataBase.SQLiteHelper
 import com.example.ccl3_bbetter_app.Reminder.AlarmReceiver
 import com.example.ccl3_bbetter_app.Reminder.Util.RandomUtil
 import com.example.ccl3_bbetter_app.Reminder.channelID
@@ -25,6 +27,10 @@ import java.util.*
 
 class CreateHabit : AppCompatActivity() {
 
+    companion object {
+        lateinit var sqLiteHelper: SQLiteHelper
+    }
+
     var cal = Calendar.getInstance()
     var selectedImageTag = ""
     var timeTest: Long = 0
@@ -36,20 +42,34 @@ class CreateHabit : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_habit)
 
+        sqLiteHelper = SQLiteHelper(this, null, 1)
+
         /**
-        Create channel
+        Create Notification channel
          **/
         createNotificationChannel()
+
+        /**
+        Go Back to previous activity
+         **/
         Bck_btn2.setOnClickListener {
             finish()
         }
+
+        /**
+        Cancel creating a habit
+         **/
         btn_cancel.setOnClickListener {
             val intent = Intent(this, MainActivity2::class.java)
             startActivity(intent)
             clearEditText()
         }
 
+        /**
+            Creating a habit
+         **/
         btn_confirm.setOnClickListener {
+            /** Assigning input fields data into variables **/
             val title = habitTitle_Create.text.toString()
             val description = habitDescription_Create.text.toString()
             val goal = habitGoal_Create.text.toString()
@@ -70,14 +90,14 @@ class CreateHabit : AppCompatActivity() {
                 habit.startDate = startDate
                 habit.habitImage = habitImageTag
 
-                MainActivity2.sqLiteHelper.insertHabit(this, habit)
+                /**Insert data into Habits table**/
+                sqLiteHelper.insertHabit(this, habit)
                 //clearEditText()
                 val intent = Intent(this, MainActivity2::class.java)
                 startActivity(intent)
 
                 /**schedule Notification**/
                 scheduleNotification()
-                //Log.d("IDTEST", RandomInt.toString())
             }
         }
         val dateSetListener = object : DatePickerDialog.OnDateSetListener {
@@ -148,7 +168,12 @@ class CreateHabit : AppCompatActivity() {
         study.setBackgroundResource(if (selectedImageTag == "ic_study_work_svgrepo_com") R.drawable.btn_img_border_selected else R.drawable.btn_img_border)
         smoke.setBackgroundResource(if (selectedImageTag == "ic_no_smoking_svgrepo_com") R.drawable.btn_img_border_selected else R.drawable.btn_img_border)
         cycling.setBackgroundResource(if (selectedImageTag == "ic_cycling_sport_svgrepo_com") R.drawable.btn_img_border_selected else R.drawable.btn_img_border)
+        sleep.setBackgroundResource(if (selectedImageTag == "ic_sleep_svgrepo_com") R.drawable.btn_img_border_selected else R.drawable.btn_img_border)
         water.setBackgroundResource(if (selectedImageTag == "ic_water_svgrepo_com") R.drawable.btn_img_border_selected else R.drawable.btn_img_border)
+        wakeUp.setBackgroundResource(if (selectedImageTag == "ic_wake_up_svgrepo_com") R.drawable.btn_img_border_selected else R.drawable.btn_img_border)
+        meditate.setBackgroundResource(if (selectedImageTag == "ic_meditation_think_guru_meditate_svgrepo_com") R.drawable.btn_img_border_selected else R.drawable.btn_img_border)
+        sport.setBackgroundResource(if (selectedImageTag == "ic_sport_faculty_svgrepo_com") R.drawable.btn_img_border_selected else R.drawable.btn_img_border)
+        quit.setBackgroundResource(if (selectedImageTag == "ic_stop_svgrepo_com") R.drawable.btn_img_border_selected else R.drawable.btn_img_border)
     }
 
     /**
@@ -165,10 +190,6 @@ class CreateHabit : AppCompatActivity() {
 
             val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(channel)
-            /*val notificationManager = getSystemService(
-                NotificationManager::class.java)
-            notificationManager.createNotificationChannel(channel)
-            */
         }
 
     }
@@ -180,8 +201,6 @@ class CreateHabit : AppCompatActivity() {
         val title = habitTitle_Create.text.toString()
         val message = habitDescription_Create.text.toString()
 
-//        val date = Calendar.getInstance().time
-//        val dateInString = date.toString()
         /**
          * Passing title and description
          */
@@ -199,16 +218,10 @@ class CreateHabit : AppCompatActivity() {
         //val time = timeTest
         alarmManager.setRepeating(
             AlarmManager.RTC_WAKEUP,
-            timeTest,
+            SystemClock.elapsedRealtime() + 2000,
             AlarmManager.INTERVAL_DAY,
             pendingIntent
         )
-        Log.d("IDTEST1", RandomInt.toString())
-//        alarmManager.setExactAndAllowWhileIdle(
-//            AlarmManager.RTC_WAKEUP,
-//            time,
-//            pendingIntent
-//        )
     }
 
 

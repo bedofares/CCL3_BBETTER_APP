@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ccl3_bbetter_app.DataBase.SQLiteHelper
 import com.example.ccl3_bbetter_app.model.HabitModel
+import kotlinx.android.synthetic.main.activity_create_habit.*
 import kotlinx.android.synthetic.main.activity_update_detail_activity.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -33,6 +34,8 @@ class UpdateDetailActivity : AppCompatActivity() {
 
 
         var intent = intent
+
+        /**Get and Assign passed data into variables**/
         val title = intent.getStringExtra("TITLE")
         val description = intent.getStringExtra("DESCRIPTION")
         val reminderTime = intent.getStringExtra("REMINDER")
@@ -46,9 +49,9 @@ class UpdateDetailActivity : AppCompatActivity() {
         selectedImageTag = imageHabit.toString()
 
 
-        //actionBar!!.title = title
+        /**Set title = Habit Title**/
         HabitEdit_Title.text = title
-        //actionBar.setTitle(title)
+
 
         /**Assign text to input fields**/
         habitTitle_Edit.setText(title)
@@ -57,10 +60,15 @@ class UpdateDetailActivity : AppCompatActivity() {
         HabitStartDate_Edit.setText(startDate)
         HabitTime_Edit.setText(reminderTime)
 
-
+        /**
+        Go Back to previous activity
+         **/
         Bck_btn1.setOnClickListener {
             finish()
         }
+        /**
+        Cancel Editing a habit
+         **/
         btn_cancel_edit.setOnClickListener {
             finish()
         }
@@ -111,6 +119,7 @@ class UpdateDetailActivity : AppCompatActivity() {
         btn_update.setOnClickListener {
             val habits: HabitModel = HabitModel()
 
+            /** Assigning input fields data into variables **/
             val Habittitle = habitTitle_Edit.text
             val Habitdescription = habitDescription_Edit.text
             val Habitgoal = HabitGoal_Edit.text
@@ -147,7 +156,7 @@ class UpdateDetailActivity : AppCompatActivity() {
     }
 
     private fun updateDateInView() {
-        val myFormat = "dd/MM/yyyy" // mention the format you need
+        val myFormat = "dd/MM/yyyy"
         val sdf = SimpleDateFormat(myFormat, Locale.US)
         HabitStartDate_Edit.setText(sdf.format(cal.getTime()))
     }
@@ -157,8 +166,6 @@ class UpdateDetailActivity : AppCompatActivity() {
         val imgTag = image.tag.toString()
         val testImgId = this.resources.getIdentifier(imgTag, "drawable", packageName)
 
-        Toast.makeText(this, "You clicked ${imgTag}.", Toast.LENGTH_SHORT).show()
-
         image.setImageResource(testImgId)
         selectedImageTag = imgTag
 
@@ -166,5 +173,10 @@ class UpdateDetailActivity : AppCompatActivity() {
         smokee.setBackgroundResource(if (selectedImageTag == "ic_no_smoking_svgrepo_com") R.drawable.btn_img_border_selected else R.drawable.btn_img_border)
         cyclingg.setBackgroundResource(if (selectedImageTag == "ic_cycling_sport_svgrepo_com") R.drawable.btn_img_border_selected else R.drawable.btn_img_border)
         waterr.setBackgroundResource(if (selectedImageTag == "ic_water_svgrepo_com") R.drawable.btn_img_border_selected else R.drawable.btn_img_border)
+        sleepp.setBackgroundResource(if (selectedImageTag == "ic_sleep_svgrepo_com") R.drawable.btn_img_border_selected else R.drawable.btn_img_border)
+        wakeUpp.setBackgroundResource(if (selectedImageTag == "ic_wake_up_svgrepo_com") R.drawable.btn_img_border_selected else R.drawable.btn_img_border)
+        meditatee.setBackgroundResource(if (selectedImageTag == "ic_meditation_think_guru_meditate_svgrepo_com") R.drawable.btn_img_border_selected else R.drawable.btn_img_border)
+        sportt.setBackgroundResource(if (selectedImageTag == "ic_sport_faculty_svgrepo_com") R.drawable.btn_img_border_selected else R.drawable.btn_img_border)
+        quitt.setBackgroundResource(if (selectedImageTag == "ic_stop_svgrepo_com") R.drawable.btn_img_border_selected else R.drawable.btn_img_border)
     }
 }

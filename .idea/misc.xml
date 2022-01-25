@@ -11,13 +11,16 @@
         <entry key="..\:/WSS2021/CCL3_BBETTER_APP2/app/src/main/res/drawable/btn_outline.xml" value="0.26614583333333336" />
         <entry key="..\:/WSS2021/CCL3_BBETTER_APP2/app/src/main/res/drawable/custom_rectangle.xml" value="0.26614583333333336" />
         <entry key="..\:/WSS2021/CCL3_BBETTER_APP2/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.16875" />
+        <entry key="..\:/WSS2021/CCL3_BBETTER_APP2/app/src/main/res/drawable/ic_edit_svgrepo_com.xml" value="0.26614583333333336" />
         <entry key="..\:/WSS2021/CCL3_BBETTER_APP2/app/src/main/res/drawable/ic_notification_bell_svgrepo_com.xml" value="0.26614583333333336" />
         <entry key="..\:/WSS2021/CCL3_BBETTER_APP2/app/src/main/res/drawable/ic_three_dots_vertical.xml" value="0.16875" />
         <entry key="..\:/WSS2021/CCL3_BBETTER_APP2/app/src/main/res/drawable/ic_undraw_add_notes_re_ln36.xml" value="0.26614583333333336" />
-        <entry key="..\:/WSS2021/CCL3_BBETTER_APP2/app/src/main/res/layout/activity_create_habit.xml" value="0.19722222222222222" />
-        <entry key="..\:/WSS2021/CCL3_BBETTER_APP2/app/src/main/res/layout/activity_detail_actvity.xml" value="0.536" />
+        <entry key="..\:/WSS2021/CCL3_BBETTER_APP2/app/src/main/res/drawable/ic_undraw_blank_canvas_re_2hwy.xml" value="0.26614583333333336" />
+        <entry key="..\:/WSS2021/CCL3_BBETTER_APP2/app/src/main/res/layout/activity_create_habit.xml" value="0.40861088545897645" />
+        <entry key="..\:/WSS2021/CCL3_BBETTER_APP2/app/src/main/res/layout/activity_detail_actvity.xml" value="0.264" />
+        <entry key="..\:/WSS2021/CCL3_BBETTER_APP2/app/src/main/res/layout/activity_log.xml" value="0.264" />
         <entry key="..\:/WSS2021/CCL3_BBETTER_APP2/app/src/main/res/layout/activity_main.xml" value="0.264" />
-        <entry key="..\:/WSS2021/CCL3_BBETTER_APP2/app/src/main/res/layout/activity_main2.xml" value="0.2359375" />
+        <entry key="..\:/WSS2021/CCL3_BBETTER_APP2/app/src/main/res/layout/activity_main2.xml" value="0.2" />
         <entry key="..\:/WSS2021/CCL3_BBETTER_APP2/app/src/main/res/layout/activity_update_detail_activity.xml" value="0.19722222222222222" />
         <entry key="..\:/WSS2021/CCL3_BBETTER_APP2/app/src/main/res/layout/fragment_first_screen.xml" value="0.2359375" />
         <entry key="..\:/WSS2021/CCL3_BBETTER_APP2/app/src/main/res/layout/fragment_second_screen.xml" value="0.25" />
@@ -25,8 +28,10 @@
         <entry key="..\:/WSS2021/CCL3_BBETTER_APP2/app/src/main/res/layout/fragment_third_screen.xml" value="0.25" />
         <entry key="..\:/WSS2021/CCL3_BBETTER_APP2/app/src/main/res/layout/fragment_view_pager.xml" value="0.25" />
         <entry key="..\:/WSS2021/CCL3_BBETTER_APP2/app/src/main/res/layout/item_custom_row.xml" value="0.4" />
+        <entry key="..\:/WSS2021/CCL3_BBETTER_APP2/app/src/main/res/layout/item_custom_row2.xml" value="0.4" />
         <entry key="..\:/WSS2021/CCL3_BBETTER_APP2/app/src/main/res/layout/test.xml" value="0.25" />
         <entry key="..\:/WSS2021/CCL3_BBETTER_APP2/app/src/main/res/menu/menu.xml" value="0.19722222222222222" />
+        <entry key="..\:/WSS2021/CCL3_BBETTER_APP2/app/src/main/res/menu/menu2.xml" value="0.1" />
         <entry key="..\:/WSS2021/CCL3_BBETTER_APP2/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.26614583333333336" />
       </map>
     </option>

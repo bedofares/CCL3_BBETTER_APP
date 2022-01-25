@@ -2,6 +2,7 @@ package com.example.ccl3_bbetter_app.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,8 +19,7 @@ class ItemAdapter(val context: Context, val habits: ArrayList<HabitModel>) :
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         // Holds the TextView that will add each item to
         val HabitTitle = view.Habit_Title
-        //val tvItemDescription = view.tv_item_description
-        val cardViewItem = view.card_view_item
+        //val cardViewItem = view.card_view_item
         val habitImage = view.habit_Image
     }
 
@@ -48,7 +48,6 @@ class ItemAdapter(val context: Context, val habits: ArrayList<HabitModel>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val habit: HabitModel = habits[position]
         holder.HabitTitle.text = habit.title
-        //holder.tvItemDescription.text = habit.description
         val testImgId = holder.HabitTitle.context.resources.getIdentifier(
             habit.habitImage,
             "drawable",
@@ -66,6 +65,7 @@ class ItemAdapter(val context: Context, val habits: ArrayList<HabitModel>) :
             intent.putExtra("DATE", habit.startDate)
             intent.putExtra("IMAGE", habit.habitImage)
             intent.putExtra("COUNTER", habit.counterScore)
+            intent.putExtra("LASTCHECK", habit.lastCheck)
             context.startActivity(intent)
         }
     }

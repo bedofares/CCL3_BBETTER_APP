@@ -11,11 +11,11 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.PopupMenu
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.view.menu.MenuBuilder
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.ccl3_bbetter_app.DataBase.SQLiteHelper
+import com.example.ccl3_bbetter_app.TrackingLog.LogDB
 import com.example.ccl3_bbetter_app.adapter.ItemAdapter
 import kotlinx.android.synthetic.main.activity_main2.*
 
@@ -23,6 +23,7 @@ class MainActivity2 : AppCompatActivity() {
 
     companion object {
         lateinit var sqLiteHelper: SQLiteHelper
+        lateinit var logDB: LogDB
     }
 
     @SuppressLint("RestrictedApi", "DiscouragedPrivateApi")
@@ -32,9 +33,12 @@ class MainActivity2 : AppCompatActivity() {
         setContentView(R.layout.activity_main2)
 
         sqLiteHelper = SQLiteHelper(this, null, 1)
-        showHabit()
-        /**Display all habits**/
+        logDB = LogDB(this, null, 1)
 
+        /**Display all habits**/
+        showHabit()
+
+        /**Delete all Habits Option**/
         deleteAll.setOnClickListener {
             val popupMenu = PopupMenu(this, it)
             if (popupMenu is MenuBuilder) (popupMenu as MenuBuilder).setOptionalIconsVisible(true)
@@ -49,18 +53,13 @@ class MainActivity2 : AppCompatActivity() {
                                 "Yes",
                                 DialogInterface.OnClickListener { dialogInterface, which ->
                                     sqLiteHelper.deleteAllHabit(this)
+                                    logDB.deleteAllLogs(this)
                                     showHabit()
-//                                    Toast.makeText(
-//                                        this,
-//                                        "All data are deleted.",
-//                                        Toast.LENGTH_SHORT
-//                                    ).show()
                                     dialogInterface.dismiss()
-                                    // The id of the channel.
-                                    //val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-                                    val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
-                                    //notificationManager.createNotificationChannel(channel)
-                                   // val id: String = "channel1"
+
+                                    /** Delete Notification channel **/
+                                    val notificationManager =
+                                        getSystemService(NOTIFICATION_SERVICE) as NotificationManager
                                     notificationManager.deleteNotificationChannel("channel1")
                                 })
                             .setNegativeButton(
@@ -99,6 +98,7 @@ class MainActivity2 : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
 
     @SuppressLint("NotifyDataSetChanged")
     private fun showHabit() {

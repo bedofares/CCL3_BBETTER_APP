@@ -198,6 +198,70 @@
                         android:src="@drawable/ic_study_work_svgrepo_com"
                         android:tag="ic_study_work_svgrepo_com" />
 
+                    <ImageView
+                        android:id="@+id/sportt"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/btn_img_border"
+                        android:elevation="5dp"
+                        android:onClick="onImageClicked"
+                        android:padding="25dp"
+                        android:src="@drawable/ic_sport_faculty_svgrepo_com"
+                        android:tag="ic_sport_faculty_svgrepo_com" />
+                    <ImageView
+                        android:id="@+id/quitt"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/btn_img_border"
+                        android:elevation="5dp"
+                        android:onClick="onImageClicked"
+                        android:padding="25dp"
+                        android:src="@drawable/ic_stop_svgrepo_com"
+                        android:tag="ic_stop_svgrepo_com" />
+
+                    <ImageView
+                        android:id="@+id/meditatee"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/btn_img_border"
+                        android:elevation="5dp"
+                        android:onClick="onImageClicked"
+                        android:padding="25dp"
+                        android:src="@drawable/ic_meditation_think_guru_meditate_svgrepo_com"
+                        android:tag="ic_meditation_think_guru_meditate_svgrepo_com" />
+
+                    <ImageView
+                        android:id="@+id/sleepp"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/btn_img_border"
+                        android:elevation="5dp"
+                        android:onClick="onImageClicked"
+                        android:padding="25dp"
+                        android:src="@drawable/ic_sleep_svgrepo_com"
+                        android:tag="ic_sleep_svgrepo_com" />
+
+                    <ImageView
+                        android:id="@+id/wakeUpp"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/btn_img_border"
+                        android:elevation="5dp"
+                        android:onClick="onImageClicked"
+                        android:padding="25dp"
+                        android:src="@drawable/ic_wake_up_svgrepo_com"
+                        android:tag="ic_wake_up_svgrepo_com" />
+
 
                     <ImageView
                         android:id="@+id/smokee"
