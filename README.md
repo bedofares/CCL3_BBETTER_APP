@@ -1,2 +1,3 @@
 # BBETTER_APP "CREATE A BETTER VERSION OF YOURSELF"
 BBETTER is a habit tracking app, that helps people to introduce new habits in their daily routine Also helps to break bad habits in an organized, conscious and effective way.BBETER users can simply create habits, check their habits, and track their progress.
+![Frame 1 (1)](https://user-images.githubusercontent.com/87090113/153392107-b5f9d5b9-dde0-4e90-aca6-dcd57175754f.png)
