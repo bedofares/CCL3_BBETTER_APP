@@ -5,4 +5,4 @@ BBETTER is a habit tracking app, that helps people to introduce new habits in th
 
 https://user-images.githubusercontent.com/87090113/153392474-cc18cff2-05a1-436f-8051-e8d2d6ef6416.mp4
 
-https://drive.google.com/file/d/1OV14pyTNs6Wj_w5BoqMZ5DDxWgHDz8aE/view?usp=sharing
+App Apk : https://drive.google.com/file/d/1OV14pyTNs6Wj_w5BoqMZ5DDxWgHDz8aE/view?usp=sharing
